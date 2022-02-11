@@ -2,17 +2,17 @@ let img;
 
 function preload()
 {
-    img = loadImage('image.jpg');
+    img = loadImage('kitten.jpg');
 }
 
 
 function setup() 
 {
-    createCanvas(512, 256);
+    createCanvas(1024, 512);
     background(0);
     image(img, 0, 0);
     drawDither(img, 1);
-    image(img, 256, 0);
+    image(img, 512, 0);
     filter(GRAY);
 }
 
@@ -21,9 +21,9 @@ function setup()
 function drawDither(img, steps) 
 {
     img.loadPixels()
-    for(let x = 0; x < img.width; x++)
+    for(let y = 0; y < img.height; y++)
     {
-        for(let y = 0; y < img.height; y++)
+        for(let x = 0; x < img.width; x++)
         {
             let oldpixel = getPixel(img, x, y);
             let r = red(oldpixel);
@@ -55,6 +55,11 @@ function index(x, y)
 }
 
 
+function findClosest(val, steps)
+{
+    return  round((steps * val) / 255) * floor(255 / steps);
+}
+
 function getPixel(img, x, y)
 {
     let r = img.pixels[index(x, y)];
@@ -76,10 +81,6 @@ function setPixel(img, x, y, _color)
     img.pixels[index(x, y) + 3] = a;
 }
 
-function findClosest(val, steps)
-{
-    return  round((steps * val) / 255) * floor(255 / steps);
-}
 
 function distErr(img, x, y, qR, qG, qB)
 {
