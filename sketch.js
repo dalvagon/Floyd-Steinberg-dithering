@@ -54,11 +54,11 @@ function getPixel(img, x, y) {
   return color(r, g, b, a);
 }
 
-function setPixel(img, x, y, _color) {
-  let r = red(_color);
-  let g = green(_color);
-  let b = blue(_color);
-  let a = alpha(_color);
+function setPixel(img, x, y, c) {
+  let r = red(c);
+  let g = green(c);
+  let b = blue(c);
+  let a = alpha(c);
   img.pixels[index(x, y)] = r;
   img.pixels[index(x, y) + 1] = g;
   img.pixels[index(x, y) + 2] = b;
