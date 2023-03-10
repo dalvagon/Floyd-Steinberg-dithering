@@ -1,16 +1,16 @@
 let img;
 
 function preload() {
-  img = loadImage("kitten.jpg");
+  img = loadImage("./assets/bug.jpg");
 }
 
 function setup() {
-  createCanvas(1024, 512);
+  createCanvas(img.width * 2, img.height);
   background(0);
   image(img, 0, 0);
   drawDither(img, 1);
-  image(img, 512, 0);
-  filter(GRAY);
+  image(img, img.width, 0);
+  // filter(GRAY);
 }
 
 function drawDither(img, steps) {
